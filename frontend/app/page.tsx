@@ -226,7 +226,7 @@ export default function Home() {
     setResult(null);
     try {
       const res = await axios.post<AnalysisResult>(
-        "http://localhost:8000/api/analyze",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/analyze`,
         { text },
       );
       setResult(res.data);
@@ -254,7 +254,7 @@ export default function Home() {
     setChatLoading(true);
     try {
       const res = await axios.post<{ content: string }>(
-        "http://localhost:8000/api/chat",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/chat`,
         { messages: updated },
       );
       setChatHistory([
